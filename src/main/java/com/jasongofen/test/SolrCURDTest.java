@@ -52,9 +52,11 @@ public class SolrCURDTest {
                 String content = "";
                 // 获取文件流，取出文件内容
                 InputStream inputStream = new FileInputStream(solrConfigProperties.getDir() + fi);
-                if (prefix.equals("txt")) {
+                if (prefix.equalsIgnoreCase("txt")) {
                     content = TikaUtil.txt2String(inputStream);
-                } else if (prefix.equals("docx") || prefix.equals("doc") || prefix.equals("pdf")) {
+                } else if (prefix.equalsIgnoreCase("docx") ||
+                        prefix.equalsIgnoreCase("doc") ||
+                        prefix.equalsIgnoreCase("pdf")) {
                     content = TikaUtil.doc2String(inputStream);
                 } else {
                     inputStream.close();
